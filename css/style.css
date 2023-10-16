@@ -1,0 +1,296 @@
+@charset "UTF-8";
+
+* {
+    margin: 0;
+    padding: 0;
+    font-size: 14px;
+    /* 기본 폰트사이즈는 16px */
+}
+
+.clearfix::after {
+    content: "";
+    clear: both;
+    display: block;
+}
+
+/* reset */
+li {
+    list-style: none;
+    /* 블릿문자 삭제 */
+}
+
+a {
+    color: #333;
+    text-decoration: none;
+}
+
+/* 밑줄삭제 */
+
+/* wrap */
+#wrap {
+    width: 1000px;
+    margin: 0 auto;
+}
+
+/* header */
+#header {}
+
+#header h1 {
+    float: left;
+    width: 120px;
+}
+
+#header h1 a img {
+    width: 100%;
+}
+
+#header .nav {
+    float: right;
+    margin-top: 20px;
+}
+
+#header .nav ul {}
+
+#header .nav ul li {
+    float: left;
+    width: 120px;
+    position: relative;
+}
+
+#header .nav ul li a {
+    background-color: #ccc;
+    display: block;
+    text-align: center;
+    padding: 20px 15px;
+    transition: 0.3s;
+}
+
+/* a태그는 인라인요소 (글자만큼만 공간을 차지)라서 만약 하이퍼링크를 걸게되면 글자를 눌러야지
+하이퍼링크가 걸린다. 그옆에 빈공간을 클릭해도 하이퍼링크가 되게 만드려면 부모의 넓이를 따라
+가는 블럭요소로 바꿔주면 해결된다.*/
+
+/* text-align:center 또한 인라인 요소에 적게되면 적용이안된다 (인라인요소는 글자만큼 차지하기
+때문에 정렬할 공간이없음)그래서 display: block 을하게되면 공간이 생기게되고 정렬할수있다.
+즉 tac는 블럭요소한테 줘야하고 자식요소중 인라인요소를 가운데 정렬한다. */
+
+#header .nav ul li a:hover {
+    background-color: #ddd;
+}
+
+/* 만약 hover한테 transition을 주게되면 마우스를 때는순간 바로 바뀌게된다. */
+
+#header .nav ul li .submenu {
+    position: absolute;
+    top: 60px;
+    left: 0;
+    display: none;
+    /* 영역을 아예 사라지게 하는법 */
+    z-index: 1;
+    /* z-index는 포지션이 꼭필요하다 */
+}
+
+#banner {
+    height: 378px;
+    overflow: hidden;
+}
+
+#banner .slidelist {
+    position: relative;
+}
+
+#banner .slidelist .slideImg {
+    position: relative;
+}
+
+#banner .slidelist .slideImg h2 {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    padding: 10px 30px;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border-radius: 15px;
+    transform: translate(-50%, -50%);
+    /* left와top을 50을 주면 왼쪽모서리기준 가운데가 되기때문에 위에 
+     transform을 사용해 자기기준 -50%씩이동 */
+}
+
+#banner .slidelist .slideImg img {
+    vertical-align: top;
+    width: 100%;
+}
+
+/* 이미지 태그는 인라인요소지만 특별하게 넓이를 적용할수있다 다른 인라인요소는 block해줘여함 */
+/* 인라인 요소는 예측하지 못하는 공간을 가지고있음 해결방법은 2가지가 있다.
+1. display: block 2. vertical-align:top */
+
+/* content1 */
+#content1 {
+    width: 1000px;
+    height: 218px;
+    margin-top: 15px;
+    margin-bottom: 30px;
+}
+
+#content1 .notice {
+    height: 218px;
+    width: 49%;
+    float: left;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    padding: 30px;
+    position: relative;
+}
+
+#content1 .ad {
+    background-color: #00ffff;
+    height: 218px;
+    width: 49%;
+    float: right;
+}
+
+#content1 .ad a img {
+    width: 100%;
+}
+
+#content1 .notice ul {}
+
+#content1 .notice ul li {
+    float: left;
+    margin-right: 10px;
+}
+
+#content1 .notice ul li a {
+    font-size: 24px;
+    color: #999;
+    font-weight: bold;
+}
+
+#content1 .notice ul li.active a {
+    color: rgb(26, 25, 25);
+}
+
+#content1 .notice ul li ul {
+    position: absolute;
+    left: 33px;
+    top: 70px;
+}
+
+#content1 .notice ul li ul li a {
+    font-size: 16px;
+    float: left;
+    /* 인라인요소에 float을 주게되면 넓이또한 가지게된다. */
+    width: 68%;
+    /* 말줄임말 */
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    /* 말줄임말 */
+    font-weight: normal;
+}
+
+#content1 .notice ul li ul li span {
+    float: right;
+}
+
+
+/* 팝업 */
+
+.layer-bg {
+    position: fixed;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    /* width: 100%;height: 100%; 와같은말이다*/
+    background-color: rgba(0, 0, 0, 0.8);
+    display: none;
+
+}
+
+.layer-bg .layer {
+    position: absolute;
+    width: 500px;
+    height: 500px;
+    background-color: #fff;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    padding: 30px;
+}
+
+.layer-bg .layer h2 {
+    font-size: 35px;
+}
+
+.layer-bg .layer .close {
+    position: absolute;
+    bottom: 30px;
+    right: 30px;
+    font-weight: bold;
+    font-size: 30px;
+}
+
+#content2 {
+    height: 300px;
+}
+
+#content2 .h2 {}
+
+#content2 ul {}
+
+#content2 ul li {
+    float: left;
+    width: 24%;
+    margin-right: 1%;
+}
+
+/* #content2 .ul li:last-child{margin-right: 0;} 클래스 안만들고도 가능 */
+#content2 ul li .last {
+    margin-right: 0;
+}
+
+#content2 ul li div {
+    overflow: hidden;
+}
+
+#content2 ul li div img {
+    width: 100%;
+    transition: 0.5s;
+}
+
+#content2 ul li div:hover img {
+    transform: scale(1.2);
+}
+
+#content2 ul li div span {}
+
+#footer {
+    padding: 30px 0;
+    margin-top: 30px;
+    border-top: 1px solid #ccc;
+    /* border-width: 1px;
+    border-style: solid;
+    border-color: #ccc;; */
+}
+
+#footer address {
+    font-style: normal;
+}
+
+/* address는 기본적으로 기울림체italic이다 */
+#footer address ul {width: 530px;}
+
+#footer address ul li {
+    
+    /* inline요소는 공간을 인식하지 못한다. 패딩,마진의 상하값이 적용이안된다.(좌우는 적용됨) */
+    display: inline;
+    /* 인라인요소(글자와같은성질) 하지만 블럭요소처럼 넓이를 인식한다. */
+    padding: 0 15px 0 10px;
+}
+
+#footer address ul li.left {
+    padding-left: 0;
+}
+
+#footer address p {text-transform: uppercase;padding-top: 30px;}
